@@ -1,3 +1,5 @@
+*.scala
+*.sc
 *.class
 *.log
 
