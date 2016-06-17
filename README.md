@@ -3,16 +3,13 @@ seeking original Scala practices
 
 ------
 
-- Always pack code as a package, that is, always begin codes with things like:
-
-```scala
-    package main
-```
-
-- Use `Long` instead of `Int`, use `Double` instead of `Float`, use `null` for no op, use `Unit` for empty value data type.
+- Use `Predef.scala`.
 
 
-- Always declare data type and initial value for simple data type standalone `var/val`:
+- Use `Long` for integer number, use `Double` for real number, use `null` for no op, use `Unit` for empty value data type.
+
+
+- Always declare data type and initial value for simple typed standalone `var/val`:
 
 ```scala
     val x :Long = 5
@@ -36,7 +33,7 @@ seeking original Scala practices
 ```
 
 
-- Use `match` with `case _` for the branched structure:
+- Use `match` with `case _` for the branching structure:
 
 ```scala
     Console.println( x%2 match { case 0 => "even"; case 1 => "odd!"; case _ => "WTF!";})
@@ -48,3 +45,6 @@ seeking original Scala practices
 ```scala
     List(1, 4, 22, 7, 9, 3, 12) filter(x => x>8) foreach(Console.println)
 ```
+
+UPDATE:
+    Just implemented `read_adjl` with the above principles. Not that cheerful.
