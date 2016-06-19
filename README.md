@@ -1,5 +1,5 @@
 # ocala
-towards for a simpler Scala
+towards a simpler Scala
 
 
 ------
@@ -37,7 +37,7 @@ val c:Char = 97.toChar
 ```
 
 
-- Use `Kernighan & Ritchie` style:
+- Use the `Kernighan & Ritchie` style:
 
 ```scala
     if (x > 0) {
@@ -53,7 +53,7 @@ val c:Char = 97.toChar
 - Use the `case _` branching in `match` structure:
 
 ```scala
-    Console.println( x%2 match { case 0 => "even"; case 1 => "odd!"; case _ => "WTF!";})
+    println( x%2 match { case 0 => "even"; case 1 => "odd"; case _ => "WTF!";})
 ```
 
 
@@ -83,10 +83,10 @@ val c:Char = 97.toChar
 - `class` and `object` are awesome, but try to avoid `trait` and `abstract` things.
 
 
-- Use only `override` or `final` when some `class` has to be `extends`.
+- Use only `override` or `final` and the normal `inheritance`, when a `class` `extends` another.
 
 
-- `public` or `private` for `class` and `object`? Just use the default.
+- Use `public` or `private` in `class` and `object`? Just use the default.
 
 
 - Use only `declaration` without `parameter` in defining a class. Call the `primary constructor`, everytime an `auxiliary constructor` is being defined:
