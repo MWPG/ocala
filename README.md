@@ -116,5 +116,5 @@ val c:Char = 97.toChar
 ```scala
     val x = Array(1, 3, 5) // also works for all `Iterable`, including `Seq`, `Set`, and `Map`.
     val m = Array.ofDim[Double](3, 5) // m(1)(3)=5 still works!
-    val v = (1 to 10) map(_ toLong) toArray
+    val v = shuffle[Int, IndexedSeq](Array(1 to 10: _*) toIndexedSeq) toArray
 ```
