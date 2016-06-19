@@ -50,14 +50,14 @@ val c:Char = 97.toChar
 ```
 
 
-- Use the `case _` branching in `match` structure:
+- Use the `case _` branching in `match` structure, and try to avoid standalone `variable match` and `pattern guard`:
 
 ```scala
     println( x%2 match { case 0 => "even"; case 1 => "odd"; case _ => "WTF!";})
 ```
 
 
-- The `for` loop is great, but try to avoid `intermediate variable` or `pattern guard`:
+- The `for` loop is great, but try to avoid `intermediate variable` and `pattern guard`:
 
 ```scala
     for (i <- 1 to 3; for j <- (4-i) to 3) println(i + " ： " + j）
@@ -75,7 +75,7 @@ val c:Char = 97.toChar
 - The `_*` operator is useful when using `Range` as `parameter`:
 
 ```scala
-    def total(x :Long*):Long = { x sum }
+    def total(x :Long*):Long = { if (x.length ==0) 0 else x.head+total(x.tail : _*) }
     total(1 to 10 map(_ toLong) : _*)
 ```
 
@@ -109,3 +109,12 @@ val c:Char = 97.toChar
 
 
 - `object` is only used to pack `main`, or the `var` and `val` things.
+
+
+- `Array` with its methods work for most cases, use the `Uniform creation Principle` to creat it. Or creat a mutable `ArrayBuffer` first, and use `toArray` to convert it to an immutable `Array` when it is ready to do so. Multidimensional `Array`:
+
+```scala
+    val x = Array(1, 3, 5) // also works for all `Iterable`, including `Seq`, `Set`, and `Map`.
+    val m = Array.ofDim[Double](3, 5) // m(1)(3)=5 still works!
+    val v = (1 to 10) map(_ toLong) toArray
+```
