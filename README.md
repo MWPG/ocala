@@ -1,7 +1,12 @@
 # ocala
 principles for a simpler Scala
 
+
 ------
+
+
+- Use [ScalaDoc](http://scala-lang.org/api/)
+
 
 - Use `Predef.scala`.
 
@@ -14,6 +19,21 @@ principles for a simpler Scala
 ```scala
     val x :Long = 5
     var y :String = "hi!"
+```
+
+
+- Use `toTyp` to do data type conversion:
+
+```scala
+val d:Double = 1.9
+val l:Long = d.toLong
+val s:String = 4.56.toString
+val c:Char = 97.toChar
+
+// d: Double = 1.9
+// l: Long = 1
+// s: String = 4.56
+// c: Char = a
 ```
 
 
