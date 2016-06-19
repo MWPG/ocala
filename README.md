@@ -1,5 +1,5 @@
 # ocala
-principles for a simpler Scala
+towards for a simpler Scala
 
 
 ------
@@ -11,7 +11,7 @@ principles for a simpler Scala
 - Use `Predef.scala`.
 
 
-- Use `Long` for integer number, use `Double` for real number, use `null` for no op, use `Unit` for empty value data type.
+- Use `Long` for integer number, use `Double` for real number, use `null` or `()` for no op, use `Unit` for empty value data type.
 
 
 - Declare data type and initial value for simple typed standalone `var/val`:
@@ -37,11 +37,16 @@ val c:Char = 97.toChar
 ```
 
 
-- Define named function through anonymous function with all types declared:
+- Use `Kernighan & Ritchie` style:
 
 ```scala
-    val triple = (x:Long) => 3*x :Double
-    val fn = (x:Long) =>  {x match { case 0 => 0; case _ => "OK!";}} :Any
+    if (x > 0) {
+      x
+    } else if (x == 0) {
+      0
+    } else {
+      -x
+    }
 ```
 
 
@@ -50,3 +55,57 @@ val c:Char = 97.toChar
 ```scala
     Console.println( x%2 match { case 0 => "even"; case 1 => "odd!"; case _ => "WTF!";})
 ```
+
+
+- The `for` loop is great, but try to avoid `intermediate variable` or `pattern guard`:
+
+```scala
+    for (i <- 1 to 3; for j <- (4-i) to 3) println(i + " ： " + j）
+    for (i <- 1 to 3; for j <- 1 to 3) {if (i != j) println(i + " ： " + j)}
+```
+
+
+- Define `procedure` as:
+
+```scala
+    def (x :Any):Unit = {  ...  }
+```
+
+
+- The `_*` operator is useful when using `Range` as `parameter`:
+
+```scala
+    def total(x :Long*):Long = { x sum }
+    total(1 to 10 map(_ toLong) : _*)
+```
+
+
+- `class` and `object` are awesome, but try to avoid `trait` and `abstract` things.
+
+
+- Use only `override` or `final` when some `class` has to be `extends`.
+
+
+- `public` or `private` for `class` and `object`? Just use the default.
+
+
+- Use only `declaration` without `parameter` in defining a class. Call the `primary constructor`, everytime an `auxiliary constructor` is being defined:
+ 
+```scala
+    class Person () {
+              //  \---primary constructor (no parameter)
+
+      var id :Long = 0
+      
+      def this(i :Long) { // auxiliary constructor
+        this() // call the primary, which runs every line (only declaration) in the class.
+        id = i
+      }
+    }
+```
+
+
+- The `Uniform Access Principle` and the auto defined `getter` and `setter` functions are great. Get familiar with them.
+
+
+- `object` is only used to pack `main`, or the `var` and `val` things.
