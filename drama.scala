@@ -38,6 +38,7 @@ class Agent(id: Long, stage: Actor) extends Actor {
       receive {
         case Init =>
           state = 0
+          stage ! Init
           Console.println("Agent["+id+"] is ready. State: "+state)
         case Msg3 =>
           state += 1
@@ -57,6 +58,7 @@ class Agent(id: Long, stage: Actor) extends Actor {
             }
         case Stop =>
           Console.println("Agent["+id+"] stop")
+          stage ! Stop
           exit()
       }
     }
@@ -88,13 +90,10 @@ object drama extends App {
   val agt = new Agent(1, stg)
 
   stg.start
-  stg ! Init
-
   agt.start
   agt ! Init
 
   for (i <- (1 to 1000)) { agt ! (if (nextFloat >0.5) Msg3 else Msg4) }
 
   agt ! Stop
-  stg ! Stop
 }
