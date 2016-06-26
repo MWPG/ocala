@@ -11,7 +11,7 @@ towards a simpler Scala
 - Use `Predef.scala`.
 
 
-- Use `Long` for integer number, use `Double` for real number, use `null` or `()` for no op, use `Unit` for empty value data type.
+- Use `Double` for real number, use `null` or `()` for no op, use `Unit` for empty value data type.
 
 
 - Declare data type and initial value for simple typed standalone `var/val`:
@@ -22,7 +22,7 @@ towards a simpler Scala
 ```
 
 
-- Use `toTyp` to do data type conversion:
+- Use `toType` to do data type conversion:
 
 ```scala
 val d:Double = 1.9
